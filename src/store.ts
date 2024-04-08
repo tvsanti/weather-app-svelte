@@ -1,26 +1,4 @@
 import { writable } from "svelte/store";
-type CurrentUnits = {
-    time: string;
-    interval: string;
-    temperature_2m: string;
-}
-
-type CurrentData = {
-    time: string;
-    interval: number;
-    temperature_2m: number;
-}
-
-type HourlyUnits = {
-    time: string;
-    apparent_temperature: string;
-}
-
-type HourlyData = {
-    time: string[];
-    apparent_temperature: number[];
-}
-
 type WeatherData = {
     latitude: number;
     longitude: number;
@@ -29,11 +7,41 @@ type WeatherData = {
     timezone: string;
     timezone_abbreviation: string;
     elevation: number;
-    current_units: CurrentUnits;
-    current: CurrentData;
-    hourly_units: HourlyUnits;
-    hourly: HourlyData;
-}
+    current_units: {
+        time: string;
+        interval: string;
+        temperature_2m: string;
+    };
+    current: {
+        time: string;
+        interval: number;
+        temperature_2m: number;
+    };
+    hourly_units: {
+        time: string;
+        apparent_temperature: string;
+    };
+    hourly: {
+        time: string[];
+        apparent_temperature: number[];
+    };
+    daily_units: {
+        time: string;
+        weather_code: string;
+        temperature_2m_max: string;
+        temperature_2m_min: string;
+        sunrise: string;
+        sunset: string;
+    };
+    daily: {
+        time: string[];
+        weather_code: number[];
+        temperature_2m_max: number[];
+        temperature_2m_min: number[];
+        sunrise: string[];
+        sunset: string[];
+    };
+};
 
 export const apiData = writable<WeatherData>({
     latitude: 0,
@@ -60,7 +68,23 @@ export const apiData = writable<WeatherData>({
     hourly: {
         time: [],
         apparent_temperature: []
+    },
+    daily_units: {
+        time: '',
+        weather_code: '',
+        temperature_2m_max: '',
+        temperature_2m_min: '',
+        sunrise: '',
+        sunset: ''
+    },
+    daily: {
+        time: [],
+        weather_code: [],
+        temperature_2m_max: [],
+        temperature_2m_min: [],
+        sunrise: [],
+        sunset: []
     }
-})
+});
 
 
