@@ -13,6 +13,7 @@ type WeatherData = {
         temperature_2m: string;
     };
     current: {
+        apparent_temperature: number;
         time: string;
         interval: number;
         temperature_2m: number;
@@ -57,6 +58,7 @@ export const apiData = writable<WeatherData>({
         temperature_2m: ''
     },
     current: {
+        apparent_temperature: 0,
         time: '',
         interval: 0,
         temperature_2m: 0
