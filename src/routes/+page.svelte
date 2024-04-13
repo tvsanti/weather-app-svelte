@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { apiData } from "../store";
   import DailyTemperatureSummary from "$lib/DailyTemperatureSummary.svelte";
+  import Hourly from "$lib/Hourly.svelte";
 
   onMount(async () => {
     fetch(
@@ -117,7 +118,7 @@
     </div>
     <div class="detailed_info"></div>
   </div>
-  <div class="hourly"></div>
+  <Hourly hourly={$apiData.hourly}/>
   <div class="this_week"></div>
 </main>
 
