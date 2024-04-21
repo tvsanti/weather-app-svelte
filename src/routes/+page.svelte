@@ -3,14 +3,14 @@
   import { apiData } from "../store";
   import DailyTemperatureSummary from "$lib/DailyTemperatureSummary.svelte";
   import Hourly from "$lib/Hourly.svelte";
+  import ThisWeek from "$lib/ThisWeek.svelte";
 
   onMount(async () => {
     fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=36.7202&longitude=-4.4203&current=apparent_temperature,temperature_2m&hourly=apparent_temperature&forecast_days=1&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset"
+      "https://api.open-meteo.com/v1/forecast?latitude=36.7202&longitude=-4.4203&current=apparent_temperature,temperature_2m&hourly=apparent_temperature&forecast_days=7&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset"
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         apiData.set(data);
       })
       .catch((error) => {
@@ -18,6 +18,7 @@
         return [];
       });
   });
+
 </script>
 
 <main class="main">
@@ -118,8 +119,10 @@
     </div>
     <div class="detailed_info"></div>
   </div>
-  <Hourly hourly={$apiData.hourly}/>
-  <div class="this_week"></div>
+  <Hourly hourly={$apiData.hourly} />
+  <ThisWeek
+  daily={$apiData.daily}
+  />
 </main>
 
 <style lang="scss">

@@ -1,5 +1,46 @@
 import { writable } from "svelte/store";
-type WeatherData = {
+export type CurrentUnits = {
+    time: string;
+    interval: string;
+    temperature_2m: string;
+};
+
+export type Current = {
+    apparent_temperature: number;
+    time: string;
+    interval: number;
+    temperature_2m: number;
+};
+
+export type HourlyUnits = {
+    time: string;
+    apparent_temperature: string;
+};
+
+export type Hourly = {
+    time: string[];
+    apparent_temperature: number[];
+};
+
+export type DailyUnits = {
+    time: string;
+    weather_code: string;
+    temperature_2m_max: string;
+    temperature_2m_min: string;
+    sunrise: string;
+    sunset: string;
+};
+
+export type Daily = {
+    time: string[];
+    weather_code: number[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
+    sunrise: string[];
+    sunset: string[];
+};
+
+export type WeatherData = {
     latitude: number;
     longitude: number;
     generationtime_ms: number;
@@ -7,41 +48,12 @@ type WeatherData = {
     timezone: string;
     timezone_abbreviation: string;
     elevation: number;
-    current_units: {
-        time: string;
-        interval: string;
-        temperature_2m: string;
-    };
-    current: {
-        apparent_temperature: number;
-        time: string;
-        interval: number;
-        temperature_2m: number;
-    };
-    hourly_units: {
-        time: string;
-        apparent_temperature: string;
-    };
-    hourly: {
-        time: string[];
-        apparent_temperature: number[];
-    };
-    daily_units: {
-        time: string;
-        weather_code: string;
-        temperature_2m_max: string;
-        temperature_2m_min: string;
-        sunrise: string;
-        sunset: string;
-    };
-    daily: {
-        time: string[];
-        weather_code: number[];
-        temperature_2m_max: number[];
-        temperature_2m_min: number[];
-        sunrise: string[];
-        sunset: string[];
-    };
+    current_units: CurrentUnits;
+    current: Current;
+    hourly_units: HourlyUnits;
+    hourly: Hourly;
+    daily_units: DailyUnits;
+    daily: Daily;
 };
 
 export const apiData = writable<WeatherData>({
