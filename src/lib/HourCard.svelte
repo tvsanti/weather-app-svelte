@@ -14,8 +14,16 @@
 </div>
 
 <style lang="scss">
-  .date {
+  .hour_card {
     display: flex;
-    gap: 0.2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #1c489c;
+    .date {
+      display: flex;
+      gap: 0.2rem;
+    }
   }
 </style>

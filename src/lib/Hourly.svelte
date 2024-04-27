@@ -25,6 +25,7 @@
     .today {
       display: flex;
       gap: 1rem;
+      overflow-y: scroll;
     }
   }
 </style>

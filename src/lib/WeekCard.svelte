@@ -10,10 +10,21 @@
 </script>
 
 <div class="week_card">
-  <h2>{formattedDate}</h2>
-  <h2>Min {day.temperature_2m_max[index]}º</h2>
-  <h2>Min {day.temperature_2m_min[index]}º</h2>
+  <span>{formattedDate}</span>
+  <div class="max_min">
+    <h3>Min {day.temperature_2m_max[index]}º</h3>
+    <h3>Min {day.temperature_2m_min[index]}º</h3>
+  </div>
 </div>
 
 <style lang="scss">
+  .week_card{
+    background-color: #1c489c;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    .max_min {
+      display: flex;
+      gap: 1rem;
+    }
+  }
 </style>
